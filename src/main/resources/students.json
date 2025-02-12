@@ -1,0 +1,122 @@
+[
+  {
+    "full_name" : "Зоя Воронова",
+    "age" : 46,
+    "phone_number" : "1-192-271-7143",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Игнатьев Анатолий",
+    "age" : 34,
+    "phone_number" : "375.704.5498",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Людмила Ильинична Суханова",
+    "age" : 19,
+    "phone_number" : "(543) 568-2420",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Алла Аркадьевна Щербакова",
+    "age" : 67,
+    "phone_number" : "(722) 887-0713",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Лаврентий Матвеев",
+    "age" : 23,
+    "phone_number" : "103.410.9056",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Екатерина Анатольевна Исаева",
+    "age" : 44,
+    "phone_number" : "011-152-4597",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Шарапов Иван",
+    "age" : 26,
+    "phone_number" : "(829) 754-6545",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Петухов Григорий",
+    "age" : 28,
+    "phone_number" : "(472) 805-3498",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Дмитриева Ольга",
+    "age" : 42,
+    "phone_number" : "986-204-0629",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Панова Антонина",
+    "age" : 53,
+    "phone_number" : "1-492-953-6165",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Крюкова Анастасия",
+    "age" : 33,
+    "phone_number" : "1-937-099-4858",
+    "characters" : "student"
+  },
+  {
+    "full_name" : "Валентина Яковлева",
+    "age" : 46,
+    "phone_number" : "1-721-206-1100",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Михеева Дарья Константиновна",
+    "age" : 12,
+    "phone_number" : "(447) 787-3973",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Валерий Якушев",
+    "age" : 43,
+    "phone_number" : "(868) 684-1293",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Жукова Зоя Васильевна",
+    "age" : 34,
+    "phone_number" : "(002) 656-2225",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Валерия Третьякова",
+    "age" : 26,
+    "phone_number" : "1-782-273-6040",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Василий Гущин",
+    "age" : 25,
+    "phone_number" : "785-947-3512",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Максим Смирнов",
+    "age" : 32,
+    "phone_number" : "232.596.0308",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Ларионов Михаил",
+    "age" : 22,
+    "phone_number" : "790.810.2177",
+    "characters" : "null"
+  },
+  {
+    "full_name" : "Людмила Осипова",
+    "age" : 29,
+    "phone_number" : "(498) 985-0217",
+    "characters" : "null"
+  }
+]

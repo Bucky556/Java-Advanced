@@ -9,14 +9,23 @@ import com.pengrad.telegrambot.model.request.KeyboardButton;
 import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
 import com.pengrad.telegrambot.request.AnswerCallbackQuery;
 import com.pengrad.telegrambot.request.SendMessage;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class GeneratorCurrency {
     private final TelegramBot telegramBot = new TelegramBot("7355241716:AAGdVsHcVE2MTcgjcuRvq8qDRsqBLtNIOus");
     private static final ConcurrentHashMap<Long, State> userState = new ConcurrentHashMap<>();
 
-    public void exchange(Update update) {
+    private static final String API_URL = "https://v6.exchangerate-api.com/v6/5d36208085b0fe3800b92b6c/latest/USD";
+    private static final String API_KEY = "5d36208085b0fe3800b92b6c";
+    private static final OkHttpClient client = new OkHttpClient();
+
+    public void exchange(Update update) throws IOException {
         Message message = update.message();
         CallbackQuery callbackQuery = update.callbackQuery();
         if (message != null) {
@@ -69,38 +78,40 @@ public class GeneratorCurrency {
                 }
                 double initialAmount = 0;
                 res = "";
-                double $UZS = 12500;
-                double rubUZS = 140;
-                double $rub = 90;
+//                double $UZS = 12500;
+//                double rubUZS = 140;
+//                double $rub = 90;
+                double rateUSD = getExchangeUSD();
+                double rateRUB = getExchangeRUB();
 
                 switch (state) {
                     case UZS_TO_USD -> {
-                        initialAmount = amount / $UZS;
+                        initialAmount = amount / rateUSD;
                         res = amount + " UZS = " + initialAmount + " $";
                         break;
                     }
                     case UZS_TO_RUBL -> {
-                        initialAmount = amount * rubUZS;
+                        initialAmount = amount * rateRUB;
                         res = amount + " ₽ = " + initialAmount + " ₽";
                         break;
                     }
                     case RUBL_TO_USD -> {
-                        initialAmount = amount / $rub;
+                        initialAmount = amount / rateRUB;
                         res = amount + " ₽ = " + initialAmount + " $";
                         break;
                     }
                     case RUBL_TO_UZS -> {
-                        initialAmount = amount * $UZS;
+                        initialAmount = amount * rateUSD;
                         res = amount + " ₽ = " + initialAmount + " UZS";
                         break;
                     }
                     case USD_TO_UZS -> {
-                        initialAmount = amount * $UZS;
+                        initialAmount = amount * rateUSD;
                         res = amount + " $ = " + initialAmount + " UZS";
                         break;
                     }
                     case USD_TO_RUBL -> {
-                        initialAmount = amount * $rub;
+                        initialAmount = amount * rateRUB;
                         res = amount + " $ = " + initialAmount + " ₽";
                         break;
                     }
@@ -111,6 +122,42 @@ public class GeneratorCurrency {
         } else {
             System.out.println(callbackQuery.data());
         }
+    }
+
+    private double getExchangeRUB() throws IOException {
+        Request request = new Request.Builder()
+                .url(API_URL)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful() && response.body() != null) {
+                String responseBody = response.body().string();
+                JSONObject jsonResponse = new JSONObject(responseBody);
+                JSONObject rates = jsonResponse.getJSONObject("conversion_rates");
+                return rates.getDouble("RUB");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 1.0;
+    }
+
+    private double getExchangeUSD() throws IOException {
+        Request request = new Request.Builder()
+                .url(API_URL)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful() && response.body() != null) {
+                String responseBody = response.body().string();
+                JSONObject jsonResponse = new JSONObject(responseBody);
+                JSONObject rates = jsonResponse.getJSONObject("conversion_rates");
+                return rates.getDouble("USD");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 1.0;
     }
 }
 
